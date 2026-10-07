@@ -1,6 +1,6 @@
-# InterVideo – Live AI Avatar Conversation App
+# InterVideo Client – Live AI Avatar Interface
 
-Talk live with an AI avatar animated from a single photo. Your webcam and the avatar feed display side by side. Sessions record to local video files. Choose any persona via system prompt (interviewer, storyteller, teacher, etc.). Conversation memory persists across sessions.
+Frontend for InterVideo: live AI avatar conversation with real-time animation, speech recognition, and video recording. Works with the InterVideo Pipeline backend for CV/JD-driven interview generation.
 
 ## Features
 
@@ -54,7 +54,7 @@ Talk live with an AI avatar animated from a single photo. Your webcam and the av
 
 ## Deployment
 
-See the brief in `/meta/brief.md` for full implementation details, pipeline architecture, and constraints.
+Part of InterVideo monorepo. See `/meta/brief.md` for full system architecture. Pipeline backend lives at `/pipeline/`.
 
 ---
 
