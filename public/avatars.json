@@ -1,0 +1,26 @@
+[
+  {
+    "id": "avatar-default",
+    "name": "Tony",
+    "path": "/avatar.png",
+    "preview": "/avatar.png",
+    "description": "Friendly American interviewer with a warm, encouraging style",
+    "voice": "en-US-TonyNeural"
+  },
+  {
+    "id": "avatar-alt-1",
+    "name": "Nadine",
+    "path": "/avatar1.png",
+    "preview": "/avatar1.png",
+    "description": "Professional British consultant with articulate, polished delivery",
+    "voice": "en-GB-MiaNeural"
+  },
+  {
+    "id": "avatar-alt-2",
+    "name": "Marjane",
+    "path": "/avatar2.png",
+    "preview": "/avatar2.png",
+    "description": "Approachable mentor with a calm, supportive conversational tone",
+    "voice": "en-US-SaraNeural"
+  }
+]

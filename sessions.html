@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intervideo - Sessions</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="/" class="nav-brand">
+          <span class="brand-dot"></span>
+          <span>InterVideo</span>
+        </a>
+        <nav class="nav-links">
+          <a href="/call.html" class="nav-link">Live Call</a>
+          <a href="/sessions.html" class="nav-link active">Sessions</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <div class="page-header">
+        <div>
+          <h2>Recorded Sessions</h2>
+          <p class="subtitle">History of previous avatar interviews and conversations in reverse chronological order.</p>
+        </div>
+        <button id="refreshBtn" class="secondary-btn">↻ Refresh</button>
+      </div>
+
+      <div id="loading" class="state-card">Loading sessions...</div>
+      <div id="error" class="state-card error-card" style="display: none;"></div>
+      <div id="empty" class="state-card" style="display: none;">No sessions found yet. <a href="/call.html">Start a live call</a>!</div>
+
+      <div id="sessionsList" class="sessions-grid"></div>
+    </main>
+
+    <script type="module" src="/src/sessions.ts"></script>
+  </body>
+</html>

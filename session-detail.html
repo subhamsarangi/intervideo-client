@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intervideo - Session Detail</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="/" class="nav-brand">
+          <span class="brand-dot"></span>
+          <span>InterVideo</span>
+        </a>
+        <nav class="nav-links">
+          <a href="/call.html" class="nav-link">Live Call</a>
+          <a href="/sessions.html" class="nav-link active">Sessions</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <div class="session-nav-bar">
+        <a href="/sessions.html" class="back-link">← Back to All Sessions</a>
+        <div class="detail-actions" id="headerActions">
+          <!-- Create/Download PDF button injected here -->
+        </div>
+      </div>
+
+      <div class="session-header-card">
+        <div class="session-meta">
+          <h2 id="sessionTitle">Session Details</h2>
+          <div class="meta-row">
+            <span class="badge" id="sessionTime">Loading time...</span>
+            <span class="badge" id="turnCount">0 messages</span>
+          </div>
+        </div>
+        <div id="pdfBtnContainer"></div>
+      </div>
+
+      <div id="systemPromptCard" class="system-prompt-card" style="display: none;">
+        <div class="system-prompt-header">
+          <span class="system-prompt-tag">System Prompt</span>
+        </div>
+        <p id="systemPromptContent" class="system-prompt-text"></p>
+      </div>
+
+      <div id="summaryCard" class="summary-card" style="display: none;">
+        <div class="summary-header">
+          <div class="summary-title-row">
+            <span class="summary-icon">✨</span>
+            <span class="summary-tag">Session Summary</span>
+          </div>
+          <button id="regenSummaryBtn" class="secondary-btn btn-sm">Regenerate Summary</button>
+        </div>
+        <p id="summaryContent" class="summary-text"></p>
+      </div>
+
+      <div id="loading" class="state-card">Loading transcript...</div>
+      <div id="error" class="state-card error-card" style="display: none;"></div>
+
+      <div id="transcriptContainer" class="conversation-feed"></div>
+    </main>
+
+    <script type="module" src="/src/session-detail.ts"></script>
+  </body>
+</html>

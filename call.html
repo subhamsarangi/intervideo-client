@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avatar Call</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="/" class="nav-brand">
+          <span class="brand-dot"></span>
+          <span>InterVideo</span>
+        </a>
+        <nav class="nav-links">
+          <a href="/sessions.html" class="nav-link">Sessions</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="call-layout">
+      <section class="videos">
+        <div class="tile">
+          <canvas id="avatar" width="640" height="480"></canvas>
+          <div class="caption" id="capAvatar"></div>
+          <span class="label">Interviewer</span>
+        </div>
+        <div class="tile">
+          <video id="cam" width="640" height="480" autoplay muted playsinline></video>
+          <div class="caption" id="capUser"></div>
+          <span class="label">You</span>
+        </div>
+      </section>
+
+      <section class="controls">
+        <div class="topic-display" id="topicDisplay" style="display: none; padding: 8px 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px;">
+          <span style="font-size: 12px; color: var(--muted); text-transform: uppercase; font-weight: 600;">Topic</span>
+          <p id="topicText" style="margin: 4px 0 0 0; font-size: 14px; color: var(--text);"></p>
+        </div>
+        <div class="buttons">
+          <button id="startBtn">Start call</button>
+          <button id="stopBtn" disabled>End call</button>
+          <label class="toggle"><input type="checkbox" id="captionsToggle" checked /> Captions</label>
+          <span id="status">Idle</span>
+        </div>
+      </section>
+
+      <section id="log" class="log" aria-live="polite"></section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

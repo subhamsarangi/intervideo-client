@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Setup Call - InterVideo</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <style>
+      .setup-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .setup-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .setup-header h1 {
+        margin: 0 0 0.5rem 0;
+        font-size: 2rem;
+      }
+
+      .setup-header p {
+        color: #666;
+        margin: 0;
+      }
+
+      .setup-section {
+        margin-bottom: 2rem;
+      }
+
+      .setup-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .avatars-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .avatar-card {
+        cursor: pointer;
+        border: 3px solid #444;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.2s;
+        background: #2a2a2a;
+        padding: 0.5rem;
+      }
+
+      .avatar-card:hover {
+        border-color: #666;
+        transform: translateY(-2px);
+      }
+
+      .avatar-card.selected {
+        border-color: #0066cc;
+        background: #1a1a2e;
+      }
+
+      .avatar-preview {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+        background: #2a2a2a;
+      }
+
+      .avatar-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-align: center;
+        color: #e0e0e0;
+        word-break: break-word;
+      }
+
+      .topic-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .topic-field label {
+        font-weight: 600;
+        color: #333;
+      }
+
+      .topic-input-row {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .topic-input-row input {
+        flex: 1;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        font-family: inherit;
+        transition: border-color 0.2s;
+      }
+
+      .topic-input-row input:focus {
+        outline: none;
+        border-color: #0066cc;
+      }
+
+      .btn-validate {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        background: #0066cc;
+        color: white;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .btn-validate:hover:not(:disabled) {
+        background: #0052a3;
+      }
+
+      .btn-validate:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+
+      .validation-message {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        padding: 0.75rem;
+        border-radius: 4px;
+        display: none;
+      }
+
+      .validation-message.error {
+        background: #fee;
+        color: #c33;
+        border: 1px solid #fcc;
+        display: block;
+      }
+
+      .validation-message.success {
+        background: #efe;
+        color: #3c3;
+        border: 1px solid #cfc;
+        display: block;
+      }
+
+      .validation-message.loading {
+        background: #eef;
+        color: #03c;
+        border: 1px solid #ccf;
+        display: block;
+      }
+
+      .suggestions {
+        margin-top: 1rem;
+        display: none;
+      }
+
+      .suggestions.visible {
+        display: block;
+      }
+
+      .suggestions-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #666;
+        margin-bottom: 0.5rem;
+      }
+
+      .suggestions-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .suggestion-chip {
+        padding: 0.5rem 1rem;
+        background: #e6f0ff;
+        border: 2px solid #0066cc;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: #0066cc;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+
+      .suggestion-chip:hover {
+        background: #0066cc;
+        color: white;
+        transform: translateY(-1px);
+      }
+
+      .action-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .action-buttons button {
+        flex: 1;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s;
+      }
+
+      .btn-primary {
+        background: #0066cc;
+        color: white;
+      }
+
+      .btn-primary:hover:not(:disabled) {
+        background: #0052a3;
+        transform: translateY(-1px);
+      }
+
+      .btn-primary:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+
+      .btn-secondary {
+        background: #f0f0f0;
+        color: #333;
+      }
+
+      .btn-secondary:hover {
+        background: #e0e0e0;
+      }
+
+      .loading-spinner {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid #0066cc;
+        border-top: 2px solid transparent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin-right: 0.5rem;
+        vertical-align: middle;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .error-message {
+        background: #fee;
+        color: #c33;
+        border: 1px solid #fcc;
+        padding: 1rem;
+        border-radius: 4px;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="/" class="nav-brand">
+          <span class="brand-dot"></span>
+          <span>InterVideo</span>
+        </a>
+        <nav class="nav-links">
+          <a href="/setup.html" class="nav-link active">Live Call</a>
+          <a href="/sessions.html" class="nav-link">Sessions</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="setup-container">
+      <div class="setup-header">
+        <h1>Setup Your Interview</h1>
+        <p>Choose an avatar and a topic to get started</p>
+      </div>
+
+      <div class="setup-section">
+        <h2>Select Interviewer</h2>
+        <div class="avatars-grid" id="avatarsGrid">
+          <!-- avatars loaded dynamically -->
+        </div>
+        <div class="error-message" id="avatarError" style="display: none;"></div>
+      </div>
+
+      <div class="setup-section">
+        <h2>Enter Topic</h2>
+        <div class="topic-field">
+          <label for="topicInput">What would you like to discuss?</label>
+          <div class="topic-input-row">
+            <input
+              type="text"
+              id="topicInput"
+              placeholder="e.g., job interview preparation, Python programming, startup pitching"
+              spellcheck="false"
+            />
+            <button class="btn-validate" id="validateBtn">Submit</button>
+          </div>
+          <div class="validation-message" id="validationMessage"></div>
+          <div class="suggestions" id="suggestionsContainer">
+            <div class="suggestions-label">Try these instead:</div>
+            <div class="suggestions-list" id="suggestionsList"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn-secondary" onclick="window.history.back()">Back</button>
+        <button class="btn-primary" id="startBtn" disabled>Go to Interview</button>
+      </div>
+
+      <div class="error-message" id="globalError" style="display: none;"></div>
+    </main>
+
+    <script type="module" src="/src/setup.ts"></script>
+  </body>
+</html>
