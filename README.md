@@ -15,7 +15,7 @@ Frontend for InterVideo: live AI avatar conversation with real-time animation, s
 **Backend**: Node.js 26.x + TypeScript  
 **Frontend**: Vite + vanilla TypeScript + Canvas 2D  
 **STT**: Deepgram Flux  
-**LLM**: OpenAI GPT-5.4-nano (Responses API)  
+**LLM**: OpenAI gpt-5.4-nano (Responses API)  
 **TTS + Visemes**: Azure Cognitive Services Speech  
 **Face Animation**: MediaPipe Face Landmarker
 
