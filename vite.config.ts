@@ -4,22 +4,9 @@ import { defineConfig } from "vite";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "http://127.0.0.1:8787",
-      "/ws": { target: "ws://127.0.0.1:8787", ws: true },
+      "/api": "http://127.0.0.1:3001",
+      "/ws": { target: "ws://127.0.0.1:3001", ws: true },
     },
-    middlewares: [
-      {
-        name: "spa-fallback",
-        apply: "serve",
-        handler(req, res, next) {
-          // Rewrite /call/* to /call.html before Vite processes it
-          if (req.url.startsWith("/call/")) {
-            req.url = "/call.html";
-          }
-          next();
-        },
-      },
-    ],
   },
   build: {
     rollupOptions: {
